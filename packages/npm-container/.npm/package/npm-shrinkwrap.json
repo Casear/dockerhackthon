@@ -1,0 +1,98 @@
+{
+  "dependencies": {
+    "dockerode": {
+      "version": "2.0.4",
+      "dependencies": {
+        "docker-modem": {
+          "version": "0.1.19",
+          "dependencies": {
+            "debug": {
+              "version": "0.7.4"
+            },
+            "follow-redirects": {
+              "version": "0.0.3"
+            },
+            "querystring": {
+              "version": "0.2.0"
+            },
+            "readable-stream": {
+              "version": "1.0.33",
+              "dependencies": {
+                "core-util-is": {
+                  "version": "1.0.1"
+                },
+                "isarray": {
+                  "version": "0.0.1"
+                },
+                "string_decoder": {
+                  "version": "0.10.31"
+                },
+                "inherits": {
+                  "version": "2.0.1"
+                }
+              }
+            }
+          }
+        },
+        "underscore": {
+          "version": "1.5.2"
+        }
+      }
+    },
+    "simple-ssh": {
+      "version": "0.8.0",
+      "dependencies": {
+        "xtend": {
+          "version": "2.0.6",
+          "dependencies": {
+            "is-object": {
+              "version": "0.1.2"
+            },
+            "object-keys": {
+              "version": "0.2.0",
+              "dependencies": {
+                "foreach": {
+                  "version": "2.0.5"
+                },
+                "indexof": {
+                  "version": "0.0.1"
+                },
+                "is": {
+                  "version": "0.2.7"
+                }
+              }
+            }
+          }
+        },
+        "ssh2": {
+          "version": "0.3.6",
+          "dependencies": {
+            "readable-stream": {
+              "version": "1.0.27-1",
+              "dependencies": {
+                "core-util-is": {
+                  "version": "1.0.1"
+                },
+                "isarray": {
+                  "version": "0.0.1"
+                },
+                "string_decoder": {
+                  "version": "0.10.31"
+                },
+                "inherits": {
+                  "version": "2.0.1"
+                }
+              }
+            },
+            "streamsearch": {
+              "version": "0.1.2"
+            },
+            "asn1": {
+              "version": "0.2.1"
+            }
+          }
+        }
+      }
+    }
+  }
+}
