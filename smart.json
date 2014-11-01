@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "jade": {},
+    "iron:router": {},
+    "coffeescript": {},
+    "meteorhacks:npm":{}
+  }
+}
