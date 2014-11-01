@@ -23,44 +23,6 @@ Router.map ()->
               userInfo.uid = result.data.uid
               Accounts.insert(userInfo)
             ServerSession.set(result.data.uid,result.data.access_token)
-            console.log 'test'
-            #HTTP.call('GET','https://api.digitalocean.com/v2/regions',
-            #  headers:
-            #    Authorization: 'Bearer '+ServerSession.get(result.data.uid)
-            #  (error,result)->
-            #    if !error
-            #      console.log result
-            #)
-            #HTTP.call('GET','https://api.digitalocean.com/v2/images/?page=2',
-            #  headers:
-            #    Authorization: 'Bearer '+ServerSession.get(result.data.uid)
-            #  (error,result)->
-            #    if !error
-            #      console.log result
-            #)
-            HTTP.call('POST','https://api.digitalocean.com/v2/droplets',
-              {
-                headers:
-                  'Authorization': 'Bearer ' + ServerSession.get(result.data.uid)
-                  'Content-Type': 'application/json'
-                data:
-                  name: 'test-droplets'
-                  region: 'sgp1'
-                  size: '512mb'
-                  image: 7354580
-              }
-              (error,result)->
-                if !error
-                  console.log result
-            )
-            #HTTP.call('DELETE','https://api.digitalocean.com/v2/droplets/3028017',
-            #  headers:
-            #    'Authorization': 'Bearer ' + ServerSession.get(result.data.uid)
-            #    'Content-Type': 'application/x-www-form-urlencoded'
-            #  (error,result)->
-            #    if !error
-            #      console.log result
-            #)
       )
   )
 
