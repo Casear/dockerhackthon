@@ -3,11 +3,12 @@ Router.configure({
 })
 Router.map ()->
   this.route('index', {path: '/'})
-  this.route('login', {path: '/login'})
+  this.route('digitalOceanLogin', {path: 'https://cloud.digitalocean.com/v1/oauth/authorize?client_id=ba7690c54b256ff7482d2de387f7737d02a3e59f8516f1c2faf228b7269339a2&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fdigitalocean%2Foauthcallback&response_type=code&scope=read write'})
   this.route('digitalOcean',
     where: 'server'
     path: '/digitalocean/oauthcallback'
     action: ()->
+      res = this.response
       HTTP.call('POST', 'https://cloud.digitalocean.com/v1/oauth/token',
         data:
           grant_type: 'authorization_code'
@@ -18,11 +19,14 @@ Router.map ()->
         (error,result)->
           if !error
             alreadyExist = Accounts.findOne({uid: result.data.uid})
-            if alreadyExist
-              userInfo = result.data.info
-              userInfo.uid = result.data.uid
+            userInfo = result.data.info
+            userInfo.uid = result.data.uid
+            if not alreadyExist
               Accounts.insert(userInfo)
             ServerSession.set(result.data.uid,result.data.access_token)
+            console.log userInfo
+            res.writeHead(301, {Location: '/'})
+            res.end()
       )
   )
 
