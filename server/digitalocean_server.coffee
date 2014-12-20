@@ -39,7 +39,7 @@ getAccessToken = (query)->
     )
 
   catch err
-    throw new Error('Failed to complete OAuth handshake with DigitalOcean. ' + response.data.error)
+    throw _.extend(new Error('Failed to complete OAuth handshake with DigitalOcean. ' + response.data.error))
 
   if response.data.error
     throw new Error('Failed to complete OAuth handshake with DigitalOcean. ' + response.data.error)
@@ -47,4 +47,4 @@ getAccessToken = (query)->
     return response.data.access_token
 
 Digitalocean.retrieveCredential = (credentialToken, credentialSecret)->
-  return Oauth.retrieveCredential(credentialToken, credentialSecret)
+  return OAuth.retrieveCredential(credentialToken, credentialSecret)
