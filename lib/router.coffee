@@ -23,8 +23,6 @@ Router.map ()->
             userInfo.uid = result.data.uid
             if not alreadyExist
               Accounts.insert(userInfo)
-            ServerSession.set(result.data.uid,result.data.access_token)
-            console.log userInfo
             res.writeHead(301, {Location: '/'})
             res.end()
       )

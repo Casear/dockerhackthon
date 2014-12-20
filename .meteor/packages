@@ -16,4 +16,14 @@ cryptoquick:jade
 http
 matteodem:server-session
 mizzao:bootstrap-3
+accounts-base
+accounts-oauth
+oauth2
+underscore
+oauth
+templating
+random
+service-configuration
+accounts-ui
+accounts-facebook
 

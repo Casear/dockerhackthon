@@ -4,8 +4,8 @@ execSSH = (script,key,host,port,user)->
     conn = new connection();
     conn.on('ready', ()->
       conn.exec(script, (err, stream)->
-        if err 
-          defer.reject()  
+        if err
+          defer.reject()
         stream.on('exit', (code, signal)->
           defer.resolve()
         ).on('close', ()->
@@ -21,7 +21,7 @@ execSSH = (script,key,host,port,user)->
     defer.promise
 Meteor.publish 'createRoute', ->
     hipache = "docker run --name hipache-npm -p ::6379 -p :80:80 -d ongoworks/hipache-npm"
-    
+
 Meteor.publish 'createWebConfiguration', ()->
     port = 3000
     advisor = "docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=8080:8080 --detach=true --name=cadvisor google/cadvisor:latest"
