@@ -20,9 +20,10 @@ Digitalocean.requestCredential = (options, credentialRequestCompleteCallback)->
   loginUrl =
     'https://cloud.digitalocean.com/v1/oauth/authorize' +
     '?client_id=' + config.clientId +
-    '&scope=' + flatScope +
-    '&redirect_uri=' + OAuth._redirectUri('digitalocean', config) +
-    '&state=' + OAuth._stateParam(loginStyle, credentialToken)
+    '&scope=read write' +
+    '&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2F_oauth%2Fdigitalocean' +
+    '&state=' + OAuth._stateParam(loginStyle, credentialToken) +
+    '&response_type=code'
 
   OAuth.launchLogin({
     loginService: 'digitalocean'
