@@ -13,17 +13,17 @@ cryptoquick:jade
 
 npm-container
 cryptoquick:jade
-http
 matteodem:server-session
 mizzao:bootstrap-3
-accounts-base
 accounts-oauth
-oauth2
-underscore
-oauth
-templating
-random
-service-configuration
 accounts-ui
 accounts-facebook
+oauth
+oauth2
+http
+templating
+underscore
+random
+service-configuration
+accounts-base
 

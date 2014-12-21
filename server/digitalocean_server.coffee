@@ -1,13 +1,16 @@
 @Digitalocean = {}
+
+
 OAuth.registerService('digitalocean', 2, null, (query)->
-  accessToken = getAccessToken(query)
-  identity = getIdentity(accessToken)
+  result = getAccessToken(query)
+  accessToken = result.access_token
+  identity = result.info
   return {
     serviceData:
-      id: identity.id
+      id: result.uid
       accessToken: OAuth.sealSecret(accessToken)
       email:identity.email
-      username: identity.login
+      username: identity.name
     options:
       profile:
         name: identity.name
@@ -22,7 +25,6 @@ getAccessToken = (query)->
   config = ServiceConfiguration.configurations.findOne({service:'digitalocean'})
   if !config
     throw new ServiceConfiguration.ConfigError()
-  response = ''
   try
     response = HTTP.post(
       'https://cloud.digitalocean.com/v1/oauth/token',
@@ -33,7 +35,7 @@ getAccessToken = (query)->
           code: query.code
           client_id: config.clientId
           client_secret: OAuth.openSecret(config.secret)
-          redirect_uri: OAuth._redirectUri('digitalocean', config)
+          redirect_uri: 'http://127.0.0.1:3000/_oauth/digitalocean'
           state: query.state
           grant_type: 'authorization_code'
     )
@@ -44,7 +46,7 @@ getAccessToken = (query)->
   if response.data.error
     throw new Error('Failed to complete OAuth handshake with DigitalOcean. ' + response.data.error)
   else
-    return response.data.access_token
+    return response.data
 
 Digitalocean.retrieveCredential = (credentialToken, credentialSecret)->
   return OAuth.retrieveCredential(credentialToken, credentialSecret)

@@ -12,7 +12,7 @@ Digitalocean.requestCredential = (options, credentialRequestCompleteCallback)->
     return
   credentialToken = Random.secret()
 
-  scope = options and options.requestPermissions or []
+  scope = (options and options.requestPermissions) or []
   flatScope = _.map(scope, encodeURIComponent).join('+')
 
   loginStyle = OAuth._loginStyle('digitalocean', config, options)
